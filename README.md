@@ -1,7 +1,10 @@
 # dwolla-ruby
 
-[![Join the chat at https://gitter.im/Dwolla/dwolla-ruby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Dwolla/dwolla-ruby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-Official Ruby wrapper for Dwolla's API
+Official Ruby wrapper for Dwolla's v1 API
+
+## Deprecation warning
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)  
+This repository is for an old version of our API and is no longer actively maintained. Please use our [new SDKs](https://developers.dwolla.com/pages/sdks.html).
 
 ## Version
 2.7.0
