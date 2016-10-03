@@ -3,8 +3,9 @@
 Official Ruby wrapper for Dwolla's v1 API
 
 ## Deprecation warning
-[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)  
 This repository is for an old version of our API and is no longer actively maintained. Please use our [new SDKs](https://developers.dwolla.com/pages/sdks.html).
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ## Version
 2.7.0
