@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
     s.email       = ["michael@dwolla.com"]
     s.homepage    = "https://github.com/dwolla/dwolla-ruby"
     s.summary     = %q{Official Ruby Wrapper for Dwolla's API}
-    s.description = %q{Official Ruby Wrapper for Dwolla's API. Completely re-written based on Stripe's Ruby Bindings.}
+    s.description = %q{This SDK is for an old version of Dwolla's API and is no longer actively maintained.}
     s.license     = 'MIT'
 
     s.rubyforge_project = "dwolla-ruby"
