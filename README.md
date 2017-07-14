@@ -8,7 +8,7 @@ This repository is for an old version of our API and is no longer actively maint
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ## Version
-2.9.0
+3.0.0
 
 [![Build Status](https://travis-ci.org/Dwolla/dwolla-ruby.svg?branch=master)](https://travis-ci.org/Dwolla/dwolla-ruby)
 
@@ -53,6 +53,9 @@ Dwolla::Contacts.get(nil, "your_token")
 ```
 
 ## Changelog
+
+3.0.0
+* Pass token in Authorization header
 
 2.9.0
 * Add deprecation warning.

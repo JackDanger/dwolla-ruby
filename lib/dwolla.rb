@@ -109,7 +109,7 @@ module Dwolla
         if not @@sandbox
             return 'https://www.dwolla.com'
         else
-            return 'https://uat.dwolla.com'
+            return 'https://sandbox.dwolla.com'
         end
     end
 
@@ -118,31 +118,8 @@ module Dwolla
     end
 
     def self.request(method, url, params={}, headers={}, oauth=true, parse_response=true, custom_url=false)
-        # if oauth is nil, assume default [true]
-        oauth = true if oauth.nil?
-
-        # figure out which auth to use
-        if oauth and not params[:oauth_token]
-            if not oauth.is_a?(TrueClass) # was token passed in the oauth param?
-                params = {
-                    :oauth_token => oauth
-                }.merge(params)
-            else
-                raise AuthenticationError.new('No OAuth Token Provided.') unless token
-                params = {
-                    :oauth_token => token
-                }.merge(params)
-            end
-        elsif oauth and params[:oauth_token]
-            raise AuthenticationError.new('No OAuth Token Provided.') unless params[:oauth_token]
-        else not oauth
-            raise AuthenticationError.new('No App Key & Secret Provided.') unless (api_key && api_secret)
-            params = {
-                :client_id => api_key,
-                :client_secret => api_secret
-            }.merge(params)
-        end
-
+        self.extract_authorization(params, headers, oauth)
+        
         if !verify_ssl_certs
             $stderr.puts "WARNING: Running without SSL cert verification."
         else
@@ -306,6 +283,21 @@ module Dwolla
 
     def self.api_error(error, rcode, rbody, error_obj)
         APIError.new(error[:message], rcode, rbody, error_obj)
+    end
+
+    def self.extract_authorization(params={}, headers={}, oauthToken=true)
+        paramsToken = params.delete(:oauth_token)
+        if oauthToken.is_a?(FalseClass) 
+            raise AuthenticationError.new('No App Key & Secret Provided.') unless (api_key && api_secret)
+            params[:client_id] = api_key
+            params[:client_secret] = api_secret
+        else
+            providedAuthorization = oauthToken.is_a?(TrueClass) ? token : oauthToken
+            t = paramsToken || providedAuthorization
+            raise AuthenticationError.new('No OAuth Token Provided.') unless t
+            headers[:authorization] = "Bearer #{t}"
+        end
+
     end
 
     def self.handle_restclient_error(e)
