@@ -8,7 +8,7 @@ This repository is for an old version of our API and is no longer actively maint
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ## Version
-3.0.0
+3.0.1
 
 [![Build Status](https://travis-ci.org/Dwolla/dwolla-ruby.svg?branch=master)](https://travis-ci.org/Dwolla/dwolla-ruby)
 
@@ -39,7 +39,7 @@ This repo includes various usage examples, including:
 
 ## Concurrent requests
 
-If making requests using any background processing library such as `Sidkiq` or `Resque`, we recommend that you manually pass in tokens to functions which take an OAuth token. 
+If making requests using any background processing library such as `Sidkiq` or `Resque`, we recommend that you manually pass in tokens to functions which take an OAuth token.
 
 For example, we can do this with the `Contacts` class:
 
@@ -54,6 +54,9 @@ Dwolla::Contacts.get(nil, "your_token")
 
 ## Changelog
 
+3.0.1
+* [Match extract_authorization expectations](https://github.com/Dwolla/dwolla-ruby/pull/47)
+
 3.0.0
 * Pass token in Authorization header
 
@@ -64,7 +67,7 @@ Dwolla::Contacts.get(nil, "your_token")
 * Fix loss of filter parameters issue in `Transactions#get`. (thanks, @jackchang!)
 
 2.6.9
-* Handling of network errors has improved. If there is any issue receiving an API response an `APIConnectionError` will now be thrown. 
+* Handling of network errors has improved. If there is any issue receiving an API response an `APIConnectionError` will now be thrown.
 
 2.6.8
 * Updated `rest_client` version constraint for better compatibility.
@@ -96,7 +99,7 @@ Dwolla::Contacts.get(nil, "your_token")
 2.6.0
 
 * **BREAKING CHANGE**: OAuth access tokens now expire. Instead of a string, `Dwolla::OAuth::get_token` now returns a hash with an `access_token`, `refresh_token`, and expiration times in seconds for both. In order to refresh authorization, use `Dwolla::OAuth.refresh_auth`
-* **BREAKING CHANGE**: Guest send has been officially deprecated and removed from this gem. 
+* **BREAKING CHANGE**: Guest send has been officially deprecated and removed from this gem.
 * All MassPay endpoints have been included in this release for batch payment support.
 * Proper unit tests implemented for all endpoints.
 
@@ -110,7 +113,7 @@ Dwolla::Contacts.get(nil, "your_token")
 
 2.5.3
 
-* Updated offsite gateway to support UAT URL return when sandbox flag is toggled. 
+* Updated offsite gateway to support UAT URL return when sandbox flag is toggled.
 
 2.5.2
 
