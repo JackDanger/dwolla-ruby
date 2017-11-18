@@ -1,6 +1,6 @@
 module Dwolla
     class Contacts
-        def self.get(filters={}, token=nil)
+        def self.get(filters={}, token=true)
             url = contacts_url
 
             Dwolla.request(:get, url, filters, {}, token)
