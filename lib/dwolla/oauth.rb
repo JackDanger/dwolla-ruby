@@ -64,7 +64,7 @@ module Dwolla
       return resp
     end
 
-    def self.catalog(token=nil)
+    def self.catalog(token=true)
       resp = Dwolla.request(:get, '/catalog', {}, {}, token, false, false)
 
       return "No data received." unless resp.is_a?(Hash)
