@@ -1,6 +1,6 @@
 module Dwolla
     class Users
-        def self.get(id=nil, token=nil)
+        def self.get(id=nil, token=true)
             url = users_url
 
             unless id.nil?
@@ -13,7 +13,7 @@ module Dwolla
             Dwolla.request(:get, url, {}, {}, @oauth)
         end
 
-        def self.me(token=nil)
+        def self.me(token=true)
             # I'm not using the 'alias_method' fn
             # because the .me method should not
             # honor any parameters (i.e. User IDs)
@@ -21,13 +21,13 @@ module Dwolla
             self.get(nil, token)
         end
 
-        def self.nearby(params={})
+        def self.nearby(params={}, token=true)
           raise MissingParameterError.new('No Latitude Provided') unless params[:latitude]
           raise MissingParameterError.new('No Longitude Provided') unless params[:longitude]
 
           url = users_url + 'nearby'
 
-          Dwolla.request(:get, url, params, {}, false)
+          Dwolla.request(:get, url, params, {}, token)
         end
 
         private
