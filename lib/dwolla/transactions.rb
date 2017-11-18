@@ -1,6 +1,6 @@
 module Dwolla
     class Transactions
-        def self.get(id=nil, filters={}, token=nil)
+        def self.get(id=nil, filters={}, token=true)
             url = transactions_url
 
             if id.is_a?(Hash)
@@ -13,13 +13,13 @@ module Dwolla
             Dwolla.request(:get, url, filters, {}, token)
         end
 
-        def self.stats(filters={}, token=nil)
+        def self.stats(filters={}, token=true)
             url = transactions_url + 'stats'
 
             Dwolla.request(:get, url, filters, {}, token)
         end
 
-        def self.create(params={}, token=nil)
+        def self.create(params={}, token=true)
             raise MissingParameterError.new('No Destination ID Provided.') unless params[:destinationId]
             raise MissingParameterError.new('No Amount Provided.') unless params[:amount]
 
@@ -28,7 +28,7 @@ module Dwolla
             Dwolla.request(:post, url, params, {}, token)
         end
 
-        def self.refund(params={}, token=nil)
+        def self.refund(params={}, token=true)
             raise MissingParameterError.new('No PIN Provided.') unless params[:pin]
             raise MissingParameterError.new('No Funding Source Provided.') unless params[:fundsSource]
             raise MissingParameterError.new('No Transaction ID Provided.') unless params[:transactionId]
@@ -39,7 +39,7 @@ module Dwolla
             Dwolla.request(:post, url, params, {}, token)
         end
 
-        def self.schedule(params={}, token=nil)
+        def self.schedule(params={}, token=true)
             raise MissingParameterError.new('No PIN Provided.') unless params[:pin]
             raise MissingParameterError.new('No Destination ID Provided.') unless params[:destinationId]
             raise MissingParameterError.new('No Amount Provided.') unless params[:amount]
@@ -51,13 +51,13 @@ module Dwolla
             Dwolla.request(:post, url, params, {}, token)
         end
 
-        def self.scheduled(filters={}, token=nil)
+        def self.scheduled(filters={}, token=true)
             url = transactions_url + 'scheduled'
 
             Dwolla.request(:get, url, filters, {}, token)
         end
 
-        def self.scheduled_by_id(id, token=nil)
+        def self.scheduled_by_id(id, token=true)
             raise MissingParameterError.new('No Scheduled Transaction ID Provided.') unless id
 
             url = transactions_url + 'scheduled/' 
@@ -66,7 +66,7 @@ module Dwolla
             Dwolla.request(:get, url, {}, {}, token)
         end
 
-        def self.edit_scheduled(id, params={}, token=nil)
+        def self.edit_scheduled(id, params={}, token=true)
             raise MissingParameterError.new('No PIN Provided.') unless params[:pin]
             raise MissingParameterError.new('No Scheduled Transaction ID Provided.') unless id
 
@@ -76,7 +76,7 @@ module Dwolla
             Dwolla.request(:put, url, params, {}, token)
         end
 
-        def self.delete_scheduled_by_id(id, params={}, token=nil)
+        def self.delete_scheduled_by_id(id, params={}, token=true)
             raise MissingParameterError.new('No PIN Provided.') unless params[:pin]
             raise MissingParameterError.new('No Scheduled Transaction ID Provided.') unless id
 
@@ -86,7 +86,7 @@ module Dwolla
             Dwolla.request(:delete, url, params, {}, token)
         end        
 
-        def self.delete_all_scheduled(params={}, token=nil)
+        def self.delete_all_scheduled(params={}, token=true)
             raise MissingParameterError.new('No PIN Provided.') unless params[:pin]
 
             url = transactions_url + 'scheduled' 
