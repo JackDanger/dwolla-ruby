@@ -25,7 +25,7 @@ class UsersTest < Test::Unit::TestCase
                                 {
                                     :latitude => 45,
                                     :longitude => 50
-                                }, {}, true)
+                                }, {}, false)
     Dwolla::Users.nearby({
                              :latitude => 45,
                              :longitude => 50
