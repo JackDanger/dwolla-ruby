@@ -9,7 +9,7 @@ class UsersTest < Test::Unit::TestCase
   end
 
   def test_get_id
-    Dwolla.stubs(:request).with(:get, '/users/812-111-1111', {}, {}, false)
+    Dwolla.stubs(:request).with(:get, '/users/812-111-1111', {}, {}, true)
     Dwolla::Users.get('812-111-1111')
   end
 
@@ -25,7 +25,7 @@ class UsersTest < Test::Unit::TestCase
                                 {
                                     :latitude => 45,
                                     :longitude => 50
-                                }, {}, false)
+                                }, {}, true)
     Dwolla::Users.nearby({
                              :latitude => 45,
                              :longitude => 50
