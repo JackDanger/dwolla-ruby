@@ -9,7 +9,7 @@ class UsersTest < Test::Unit::TestCase
   end
 
   def test_get_id
-    Dwolla.stubs(:request).with(:get, '/users/812-111-1111', {}, {}, true)
+    Dwolla.stubs(:request).with(:get, '/users/812-111-1111', {}, {}, false)
     Dwolla::Users.get('812-111-1111')
   end
 
