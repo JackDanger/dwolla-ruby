@@ -7,6 +7,16 @@ class FundingSourcesTest < Test::Unit::TestCase
     Dwolla.stubs(:request).with(:get, '/fundingsources/123456', {}, {}, 'abc')
     Dwolla::FundingSources.get('123456', 'abc')
   end
+  
+  def test_get_without_specifying_token
+    Dwolla.stubs(:request).with(:get, '/fundingsources/123456', {}, {}, true)
+    Dwolla::FundingSources.get('123456')
+  end
+  
+  def test_get_all_without_specifying_token
+    Dwolla.stubs(:request).with(:get, '/fundingsources/', {}, {}, true)
+    Dwolla::FundingSources.get()
+  end  
 
   def test_withdraw
     Dwolla.stubs(:request).with(:post, '/fundingsources/123456/withdraw',

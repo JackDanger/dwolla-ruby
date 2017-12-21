@@ -1,6 +1,6 @@
 module Dwolla
     class Users
-        def self.get(id=nil, token=nil)
+        def self.get(id=nil, token=true)
             url = users_url
 
             unless id.nil?
@@ -13,7 +13,7 @@ module Dwolla
             Dwolla.request(:get, url, {}, {}, @oauth)
         end
 
-        def self.me(token=nil)
+        def self.me(token=true)
             # I'm not using the 'alias_method' fn
             # because the .me method should not
             # honor any parameters (i.e. User IDs)

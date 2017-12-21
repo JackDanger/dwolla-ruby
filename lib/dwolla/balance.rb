@@ -1,6 +1,6 @@
 module Dwolla
     class Balance
-        def self.get(token=nil)
+        def self.get(token=true)
             url = balance_url
 
             Dwolla.request(:get, url, {}, {}, token)
