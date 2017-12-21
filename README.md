@@ -8,7 +8,7 @@ This repository is for an old version of our API and is no longer actively maint
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ## Version
-3.0.1
+3.0.2
 
 [![Build Status](https://travis-ci.org/Dwolla/dwolla-ruby.svg?branch=master)](https://travis-ci.org/Dwolla/dwolla-ruby)
 
@@ -53,6 +53,9 @@ Dwolla::Contacts.get(nil, "your_token")
 ```
 
 ## Changelog
+
+3.0.2
+* [Stop passing nil token by default](https://github.com/Dwolla/dwolla-ruby/pull/49)
 
 3.0.1
 * [Match extract_authorization expectations](https://github.com/Dwolla/dwolla-ruby/pull/47)
